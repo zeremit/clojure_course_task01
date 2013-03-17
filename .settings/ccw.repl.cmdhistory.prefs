@@ -1,0 +1,2 @@
+cmdhistory=["(ccw.debug.serverrepl/with-exception-serialization (clojure.core/binding [clojure.core/*compile-path* \\"classes\\"] (clojure.core/compile 'task01.core-test)))"]
+eclipse.preferences.version=1
