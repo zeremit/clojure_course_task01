@@ -3,12 +3,13 @@
   (:gen-class))
 
 (defn get-vector[data acc]
+  ;; build linear vector structure
   (if (nil? data)
-        acc
+       acc
   (let [d data]
      (let[fdata (first d)]
       (if(vector? fdata)
-        (concat (get-vector fdata (conj acc fdata)) (get-vector (next d) acc))
+            (concat (get-vector fdata (conj acc fdata)) (get-vector (next d) ()))
         (get-vector (next d) acc))))))
 
 (defn get-links []
@@ -29,8 +30,7 @@ The link from the example above is 'https://github.com/clojure/clojure'.
 Example: ['https://github.com/clojure/clojure', 'http://clojure.com/', . . .]
 "
   (let [data (parse "clojure_google.html")]
-   (get-vector data ()))
-  )
+  (get-vector data ())))
 
 (defn -main []
   (println (str "Found " (count (get-links)) " links!")))
