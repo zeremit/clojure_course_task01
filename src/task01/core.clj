@@ -2,7 +2,7 @@
   (:require [pl.danieljanus.tagsoup :refer :all])
   (:gen-class))
 
-;; попытка реализовать без использования незнакомых функций. используется только concat
+;; попытка реализовать с помощью функций рассказаных на лекции. дополнительно используется только concat
 
 (defn get-vector-href[data]
   ;; find href
