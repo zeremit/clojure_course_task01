@@ -6,7 +6,8 @@
 
 (defn get-vector-href[data]
   ;; find href
-  (map (fn[[first second]](:href second)) (filter (fn[[first second]](= :a first)) data)))
+  (map (fn[[first second]](:href second)) 
+  (map #(first (filter (fn[%](and (vector? %) (=(first %) :a))) %)) data)))
 
 (defn get-vector-href-struct[data]
   ;; find href struct
@@ -41,9 +42,7 @@ The link from the example above is 'https://github.com/clojure/clojure'.
 Example: ['https://github.com/clojure/clojure', 'http://clojure.com/', . . .]
 "
   (let [data (parse "clojure_google.html")]
-   (vec (get-vector-href ( get-vector (get-vector-href-struct (get-vector data ()))())))))
+   (vec (get-vector-href  (get-vector-href-struct (get-vector data ()))))))
 
 (defn -main []
   (println (str "Found " (count (get-links)) " links!")))
-
-
