@@ -2,6 +2,11 @@
   (:require [pl.danieljanus.tagsoup :refer :all])
   (:gen-class))
 
+
+(defn get-vector-href[data]
+  ;; find href struct
+   (filter (fn[[first second]] (and  (= :h3 first) (= {:class "r"} second))) data)) 
+
 (defn get-vector[data acc]
   ;; build linear vector structure
   (if (nil? data)
@@ -30,7 +35,7 @@ The link from the example above is 'https://github.com/clojure/clojure'.
 Example: ['https://github.com/clojure/clojure', 'http://clojure.com/', . . .]
 "
   (let [data (parse "clojure_google.html")]
-  (get-vector data ())))
+   (get-vector-href (get-vector data ()))))
 
 (defn -main []
   (println (str "Found " (count (get-links)) " links!")))
