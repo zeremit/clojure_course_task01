@@ -2,6 +2,8 @@
   (:require [pl.danieljanus.tagsoup :refer :all])
   (:gen-class))
 
+;; попытка реализовать без использования незнакомых функций. используется только concat
+
 (defn get-vector-href[data]
   ;; find href
   (map (fn[[first second]](:href second)) (filter (fn[[first second]](= :a first)) data)))
